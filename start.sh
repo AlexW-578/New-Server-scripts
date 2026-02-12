@@ -117,7 +117,17 @@ EOF
 fi
 apt update
 
+echo "[*] Installing Tailscale"
 curl -fsSL https://tailscale.com/install.sh | sh && sudo tailscale up --accept-dns=false
+
+echo "[*] Creating SSH Key..."
+ssh-keygen -t ed25519 -C "alex@$(hostname).avali.systems"
+echo "[*] Displaying SSH Key..."
+echo "=========================================="
+cat /home/$NEW_USER/.ssh/id_ed25519.pub
+echo "=========================================="
+
+
 
 echo "=================================="
 echo "[✔] VPS initial setup completed!"
