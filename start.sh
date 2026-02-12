@@ -72,7 +72,11 @@ Signed-By: /etc/apt/keyrings/docker.asc
 EOF
 
 apt update
+apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 usermod -aG docker $NEW_USER
+systemctl status docker
+systemctl start docker
+systemctl enable docker
 
 
 echo "[*] Applying kernel hardening..."
